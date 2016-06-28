@@ -1,0 +1,28 @@
+{
+  "name": "abrt",
+  "version": "0.0.0",
+  "description": "ABRT support for nodejs",
+  "license": "GPL-3.0",
+  "repository": "humaton/abrt-nodejs",
+  "author": {
+    "name": "Tomas Hrcka",
+    "email": "humaton@fedoraproject.org"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "pkg",
+    "abrt",
+    "module"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
