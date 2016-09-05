@@ -5,6 +5,7 @@ var client = new Socket();
 var ABRT_SOCKET_PATH =  '/var/run/abrt/abrt.socket'
 
 process.on('uncaughtException', (err) => {
+    try {
     client.connect({path: ABRT_SOCKET_PATH}, function(){
       client.write("PUT / HTTP/1.1\r\n\r\n");
       client.write("PID=" + process.pid + "\0");
@@ -16,13 +17,22 @@ process.on('uncaughtException', (err) => {
       client.write("BACKTRACE=" + err.stack + "\0");
       client.end();
       console.log('data writen to abrt socket');
-    });  
+    });
+    }
+    catch(err) {
+      console.log("Error in connection to abrt socket is abrt running?")
+    }
+  
     client.on('data', (data) => {
-      console.log("recieved from abrt server: " + data.toString())
+      response_parts = data.toString().split(" ");
+      response_code = parseInt(response_parts[1])
+      if (response_code >= 400) {
+        console.log("Error when sending data to abrt server: " + data.toString())
+      }      
       client.end();
     });
     client.on('end', () => {
-      console.log('disconnected from server');
+      console.log('disconnected from abrt server');
     });  
 
 });
