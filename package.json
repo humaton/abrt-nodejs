@@ -1,6 +1,6 @@
 {
   "name": "abrt",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ABRT support for nodejs",
   "license": "GPL-3.0",
   "repository": "humaton/abrt-nodejs",
