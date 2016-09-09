@@ -16,7 +16,6 @@ process.on('uncaughtException', (err) => {
       client.write("REASON=" + err.message + "\0");
       client.write("BACKTRACE=" + err.message + "\n\n" + err.stack + "\0");
       client.end();
-      console.log('data writen to abrt socket');
     });
     }
     catch(err) {
@@ -31,10 +30,6 @@ process.on('uncaughtException', (err) => {
       }      
       client.end();
     });
-    client.on('end', () => {
-      console.log('disconnected from abrt server');
-    });  
-
 });
 
 
