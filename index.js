@@ -10,8 +10,8 @@ process.on('uncaughtException', (err) => {
       client.write("PUT / HTTP/1.1\r\n\r\n");
       client.write("PID=" + process.pid + "\0");
       client.write("EXECUTABLE=" + process.argv[1] + "\0");
-      client.write("ANALYZER=Nodejs\0");
-      client.write("TYPE=Javascript\0");
+      client.write("ANALYZER=Node.js\0");
+      client.write("TYPE=JavaScript\0");
       client.write("BASENAME=jshook\0");
       client.write("REASON=" + err.message + "\0");
       client.write("BACKTRACE=" + err.stack + "\0");
