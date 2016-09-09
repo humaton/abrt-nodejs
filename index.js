@@ -14,7 +14,7 @@ process.on('uncaughtException', (err) => {
       client.write("TYPE=JavaScript\0");
       client.write("BASENAME=jshook\0");
       client.write("REASON=" + err.message + "\0");
-      client.write("BACKTRACE=" + err.stack + "\0");
+      client.write("BACKTRACE=" + err.message + "\n\n" + err.stack + "\0");
       client.end();
       console.log('data writen to abrt socket');
     });
