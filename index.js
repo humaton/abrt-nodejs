@@ -36,7 +36,9 @@ function print_to_console(err) {
   console.log(err);
 }
 
-process.on('uncaughtException', (err) => {
-  print_to_console(err);
-  send_to_abrt(err);
-});
+if (!process.env.ABRT_IGNORE_NODEJS) {
+  process.on('uncaughtException', (err) => {
+    print_to_console(err);
+    send_to_abrt(err);
+  });
+}
